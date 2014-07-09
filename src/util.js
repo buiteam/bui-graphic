@@ -1,6 +1,7 @@
-var BUI = require('./bui'),
-  Raphael = require('./raphael'),
-  $ = require('jquery'),
+
+var $ = require('jquery'),
+  BUI = require('bui-common'),
+  Raphael = require('./raphael/index'),
   STEP_MS = 16,//16毫秒一个step
   HANDLERS = {
 
@@ -127,7 +128,7 @@ BUI.mix(Util,{
   },
   /**
    * 分步执行动画
-   * @param  {Number}   duration ���行时间
+   * @param  {Number}   duration 执行时间
    * @param  {Function} fn  每一步执行的回调函数，function(step,total){}
    * @param  {Function} callback 回调函数
    * @return {String} 动画的handler用于终止动画
@@ -143,7 +144,7 @@ BUI.mix(Util,{
     stopStep(handler);
   },
   animPath : function(pathShape,toPath,reserve,duration,easing,callback){
-    //vml阻止���画执行
+    //vml阻止动画执行
     /**/
     if(Util.vml){
       after();
@@ -329,5 +330,4 @@ BUI.mix(Util,{
     return Raphael.hsl2rgb(color.h,color.s,l).hex;
   }
 });
-
 module.exports = Util;

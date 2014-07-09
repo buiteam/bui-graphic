@@ -1,8 +1,8 @@
 
-var BUI = require('./bui'),
+var $ = require('jquery'),
+  BUI = require('bui-common'),
   Group = require('./group'),
-  $ = require('jquery'),
-  Raphael = require('./raphael'),
+  Raphael = require('./raphael/index'),
   Container = require('./container');
 
 /**
@@ -26,7 +26,7 @@ Canvas.ATTRS = {
    */
   height : {},
   /**
-   * 渲染到���节点
+   * 渲染到的节点
    * @cfg {String} render
    */
   render : {} ,
@@ -143,5 +143,4 @@ BUI.augment(Canvas,{
   }
 
 });
-
 module.exports = Canvas;

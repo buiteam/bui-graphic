@@ -2,8 +2,8 @@
  * @fileOverview 画布内部的元素扩展
  * @ignore
  */
-
-var BUI = require('./bui');
+  
+var BUI = require('bui-common');
 
 /**
  * @class BUI.Graphic.CanvasItem

@@ -1,10 +1,8 @@
-
-var BUI = require('./bui'),
+var BUI = require('bui-common'),
   Base = require('./base'),
   Item = require('./canvasitem'),
-  $ = require('jquery'),
   Util = require('./util'),
-  Raphael = require('./raphael');
+  Raphael = require('./raphael/index');
 
 /**
  * @class BUI.Graphic.Shape
@@ -78,7 +76,7 @@ BUI.augment(Shape,{
   /**
    * 旋转
    * @param  {Number} a 旋转的角度
-   * @param  {Number} x 旋转的���心点 x
+   * @param  {Number} x 旋转的中心点 x
    * @param  {Number} y 旋转的中心点 y
    */
   rotate : function(a, x, y){
@@ -143,7 +141,7 @@ BUI.augment(Shape,{
   },
   /**
    * 获取使用平移后的path
-   * @return {Array} 路径的数���
+   * @return {Array} 路径的数组
    */
   getTransformPath : function(){
     var _self = this,
@@ -164,7 +162,7 @@ BUI.augment(Shape,{
     });
     return rst;
   },
-  //获���转换的信息，返回一个数组，处理非数组的场景
+  //获取转换的信息，返回一个数组，处理非数组的场景
   __getTransform : function(value){
     if(BUI.isString(value)){
       value = value.replace(/([t,s,r])/,';$1 ').split(';');
@@ -328,7 +326,7 @@ var Line = function(cfg){
 
 Line.ATTRS = {
   /**
-   * 起始x���标
+   * 起始x坐标
    * @type {Number}
    */
   x1 : {},
@@ -361,7 +359,7 @@ BUI.augment(Line,{
     attrs.path = BUI.substitute('M {x1},{y1}L{x2},{y2}',attrs);
     return attrs;
   },
-  //获取���的坐标点
+  //获取线的坐标点
   _getLinePoint : function(pointIndex,coordIndex){
     var path = this.getPath();
     return path[pointIndex][coordIndex];
@@ -380,7 +378,7 @@ BUI.augment(Line,{
   __getX1 : function(){
     return this._getLinePoint(0,1);
   },
-  //���置坐标x2
+  //设置坐标x2
   __setX2 : function(value){
     this._setLinePoint(1,1,value);
   },
@@ -829,6 +827,5 @@ Image.ATTRS = {
 BUI.extend(Image,Shape);
 
 Shape.Image = Image;
-
 
 module.exports = Shape;

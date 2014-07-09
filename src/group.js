@@ -1,11 +1,9 @@
 
-var BUI = require('./bui'),
-  Container = require('./container'),
+var Container = require('./container'),
   Item = require('./canvasitem'),
   Util = require('./util'),
-  $ = require('jquery'),
   Shape = require('./shape');
-require('./raphaeljs/group');
+  require('./raphael/group');
 
 /**
  * @class BUI.Graphic.Group

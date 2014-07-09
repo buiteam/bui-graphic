@@ -1,21 +1,20 @@
-
-var BUI = require('../bui');
+var BUI = require('bui-common');
 
 window.Raphael && function  (R) {
 
-  /*
-   * 创建分组
-   */
-  R.fn.group = function(){
-    var out = R._engine.group(this);
+	/*
+	 * 创建分组
+	 */
+	R.fn.group = function(){
+		var out = R._engine.group(this);
       this.__set__ && this.__set__.push(out);
     return out;
-  };
+	};
 
 
 
-  //添加group的默认path
-  R._getPath.group = function(el){
+	//添加group的默认path
+	R._getPath.group = function(el){
       var bbox = el._getBBox();
       return  R._rectPath(0,0, bbox.width, bbox.height);
   }
@@ -47,7 +46,7 @@ window.Raphael && function  (R) {
     function createNode(tagName){
       return R._g.doc.createElementNS("http://www.w3.org/2000/svg", tagName)
     }
-    R._engine.group = function(svg){
+  	R._engine.group = function(svg){
         var el = createNode("g");
         svg.canvas && svg.canvas.appendChild(el);
         var res = new Group(el, svg);
@@ -70,7 +69,7 @@ window.Raphael && function  (R) {
   
   //use vml
   if(window.Raphael.vml){
-    var createNode = function (tagName) {
+  	var createNode = function (tagName) {
       return R._g.doc.createElement('div');
     };
     //获取path
@@ -163,4 +162,3 @@ window.Raphael && function  (R) {
   }
 
 }(window.Raphael);
- 
